@@ -1,9 +1,14 @@
 spring:
+   profiles: 
+      active: dev
+---
+spring:
+  profiles: dev
   application:
     name: eureka-server 
 
 server:  
-  port: ${PORT:8761}
+  port: ${8761:8761}
     
 eureka:  
   instance:
@@ -17,3 +22,25 @@ eureka:
 ribbon:
    eureka:
       enabled: false
+
+---
+spring:
+  profiles: prod
+  application:
+    name: eureka-server 
+
+server:  
+  port: ${8761:8761}
+    
+eureka:  
+  instance:
+    instance-id: http://193.112.185.116:8761
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+    enableSelfPreservation: false  
+    
+ribbon:
+   eureka:
+      enabled: false      
