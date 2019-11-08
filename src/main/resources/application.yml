@@ -34,7 +34,7 @@ server:
     
 eureka:  
   instance:
-    instance-id: http://193.112.185.116:8761
+    instance-id: ${spring.application.name}:${server.port}
   client:
     registerWithEureka: false
     fetchRegistry: false
